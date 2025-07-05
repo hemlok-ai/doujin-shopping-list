@@ -10,38 +10,38 @@ class DoujinShoppingListApp:
         self.text_var = tk.StringVar()
 
         # テキスト表示エリア
-        self.text_display = tk.Text(root, height=8, width=60, font=("Arial", 14))
-        self.text_display.pack(pady=10)
+        self.text_display = tk.Text(root, height=10, width=70, font=("Arial", 18))
+        self.text_display.pack(pady=15)
 
         # フレーム作成
         self.frame_categories = tk.Frame(root)
-        self.frame_categories.pack(pady=5)
+        self.frame_categories.pack(pady=8)
         self.frame_quantity = tk.Frame(root)
-        self.frame_quantity.pack(pady=5)
+        self.frame_quantity.pack(pady=8)
         self.frame_price = tk.Frame(root)
-        self.frame_price.pack(pady=5)
+        self.frame_price.pack(pady=8)
         self.frame_numpad = tk.Frame(root)
-        self.frame_numpad.pack(pady=5)
+        self.frame_numpad.pack(pady=8)
         self.frame_copy = tk.Frame(root)
-        self.frame_copy.pack(pady=10)
+        self.frame_copy.pack(pady=15)
 
         # カテゴリボタン
         categories = ["新刊", "既刊", "新刊セット", "グッズ", "その他", "/"]
         for cat in categories:
-            btn = tk.Button(self.frame_categories, text=cat, width=8, command=lambda c=cat: self.append_text(c))
-            btn.pack(side=tk.LEFT, padx=3)
+            btn = tk.Button(self.frame_categories, text=cat, width=10, height=2, font=("Arial", 16), command=lambda c=cat: self.append_text(c))
+            btn.pack(side=tk.LEFT, padx=5)
 
         # 数量ボタン
         quantities = ["部", "個", "つ"]
         for qty in quantities:
-            btn = tk.Button(self.frame_quantity, text=qty, width=8, command=lambda q=qty: self.append_text(q))
-            btn.pack(side=tk.LEFT, padx=3)
+            btn = tk.Button(self.frame_quantity, text=qty, width=10, height=2, font=("Arial", 16), command=lambda q=qty: self.append_text(q))
+            btn.pack(side=tk.LEFT, padx=5)
 
         # 価格ボタン
         prices = ["500円", "1000円", "1500円", "2000円", "3000円"]
         for price in prices:
-            btn = tk.Button(self.frame_price, text=price, width=8, command=lambda p=price: self.append_text(p))
-            btn.pack(side=tk.LEFT, padx=3)
+            btn = tk.Button(self.frame_price, text=price, width=10, height=2, font=("Arial", 16), command=lambda p=price: self.append_text(p))
+            btn.pack(side=tk.LEFT, padx=5)
 
         # テンキーボタン
         numpad_buttons = [
@@ -51,11 +51,11 @@ class DoujinShoppingListApp:
             "0", "00"
         ]
         for i, num in enumerate(numpad_buttons):
-            btn = tk.Button(self.frame_numpad, text=num, width=5, command=lambda n=num: self.append_text(n))
-            btn.grid(row=i//3, column=i%3, padx=2, pady=2)
+            btn = tk.Button(self.frame_numpad, text=num, width=7, height=3, font=("Arial", 16), command=lambda n=num: self.append_text(n))
+            btn.grid(row=i//3, column=i%3, padx=4, pady=4)
 
         # コピー用ボタン
-        copy_btn = tk.Button(self.frame_copy, text="コピー", width=10, command=self.copy_to_clipboard)
+        copy_btn = tk.Button(self.frame_copy, text="コピー", width=12, height=2, font=("Arial", 16), command=self.copy_to_clipboard)
         copy_btn.pack()
 
     def append_text(self, text):
