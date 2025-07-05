@@ -55,8 +55,8 @@ class DoujinShoppingListApp(ctk.CTk):
             "0", "00", "000"
         ]
         for i, num in enumerate(numpad_buttons):
-            btn = ctk.CTkButton(self.frame_numpad, text=num, font=("Arial", 14), width=60, command=lambda n=num: self.append_text(n))
-            btn.grid(row=i//3, column=i%3, padx=2, pady=2)
+            btn = ctk.CTkButton(self.frame_numpad, text=num, font=("Arial", 16), width=80, height=60, command=lambda n=num: self.append_text(n))
+            btn.grid(row=i//3, column=i%3, padx=4, pady=4)
 
         # テンキーフレームのグリッド設定で均等割り当て
         for i in range(4):
@@ -64,13 +64,21 @@ class DoujinShoppingListApp(ctk.CTk):
         for j in range(3):
             self.frame_numpad.grid_columnconfigure(j, weight=1)
 
-        # コピー用ボタン
-        copy_btn = ctk.CTkButton(self.frame_copy, text="コピー", font=("Arial", 12), width=120, command=self.copy_to_clipboard)
-        copy_btn.pack(padx=2, pady=2)
+        # コピー用ボタンとクリア用ボタンを横一列に配置
+        self.frame_copy.grid_columnconfigure(0, weight=1)
+        self.frame_copy.grid_columnconfigure(1, weight=1)
 
-        # クリア用ボタン
+        copy_btn = ctk.CTkButton(self.frame_copy, text="コピー", font=("Arial", 12), width=120, command=self.copy_to_clipboard)
+        copy_btn.grid(row=0, column=0, sticky="ew", padx=2, pady=2)
+
         clear_btn = ctk.CTkButton(self.frame_copy, text="クリア", font=("Arial", 12), width=120, command=self.clear_text)
-        clear_btn.pack(padx=2, pady=2)
+        clear_btn.grid(row=0, column=1, sticky="ew", padx=2, pady=2)
+
+        # 起動時にすべてのボタンが表示される適切なサイズにウィンドウサイズを調整
+        self.update_idletasks()
+        width = self.winfo_reqwidth()
+        height = self.winfo_reqheight()
+        self.geometry(f"{width}x{height}")
 
     def append_text(self, text):
         current_text = self.text_display.get("1.0", "end-1c")
