@@ -59,6 +59,32 @@ class DoujinShoppingListApp:
         copy_btn.pack()
 
     def append_text(self, text):
+        # 数字入力の連結処理用に現在のテキストを取得
+        current_text = self.text_display.get("1.0", tk.END).strip()
+
+        # 「/」ボタンは前後にスペースを入れて区切りとして扱う
+        if text == "/":
+            # すでに末尾にスペースがなければ追加
+            if not current_text.endswith(" "):
+                self.text_display.insert(tk.END, " / ")
+            else:
+                self.text_display.insert(tk.END, "/")
+            return
+
+        # 数字（0-9, 00）の場合は連結する
+        if text.isdigit() or text == "00":
+            # 末尾が数字なら連結、そうでなければスペースを入れてから追加
+            if current_text and current_text[-1].isdigit():
+                self.text_display.insert(tk.END, text)
+            else:
+                if current_text and not current_text.endswith(" "):
+                    self.text_display.insert(tk.END, " ")
+                self.text_display.insert(tk.END, text)
+            return
+
+        # それ以外の文字はスペースを入れてから追加（区切りを明確に）
+        if current_text and not current_text.endswith(" "):
+            self.text_display.insert(tk.END, " ")
         self.text_display.insert(tk.END, text)
 
     def copy_to_clipboard(self):
