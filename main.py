@@ -26,26 +26,26 @@ class DoujinShoppingListApp(ctk.CTk):
         # カテゴリボタン
         categories = ["新刊", "既刊", "新刊セット", "グッズ", "その他", "/"]
         for cat in categories:
-            btn = ctk.CTkButton(self.frame_categories, text=cat, font=("Arial", 14), command=lambda c=cat: self.append_text(c))
-            btn.pack(side="left", expand=True, fill="both", padx=4, pady=4)
+            btn = ctk.CTkButton(self.frame_categories, text=cat, font=("Arial", 14), width=80, command=lambda c=cat: self.append_text(c))
+            btn.pack(side="left", padx=4, pady=4)
 
         # 数量ボタン
         quantities = ["部", "個"]  # 「つ」ボタンを削除
         for qty in quantities:
-            btn = ctk.CTkButton(self.frame_quantity, text=qty, font=("Arial", 14), command=lambda q=qty: self.append_text(q))
-            btn.pack(side="left", expand=True, fill="both", padx=4, pady=4)
+            btn = ctk.CTkButton(self.frame_quantity, text=qty, font=("Arial", 14), width=80, command=lambda q=qty: self.append_text(q))
+            btn.pack(side="left", padx=4, pady=4)
 
         # 「1部」「1セット」ボタン追加
         one_unit_buttons = ["1部", "1セット"]
         for unit in one_unit_buttons:
-            btn = ctk.CTkButton(self.frame_quantity, text=unit, font=("Arial", 14), command=lambda u=unit: self.append_text(u))
-            btn.pack(side="left", expand=True, fill="both", padx=4, pady=4)
+            btn = ctk.CTkButton(self.frame_quantity, text=unit, font=("Arial", 14), width=80, command=lambda u=unit: self.append_text(u))
+            btn.pack(side="left", padx=4, pady=4)
 
         # 価格ボタン
         prices = ["500円", "1000円", "1500円", "2000円", "3000円"]
         for price in prices:
-            btn = ctk.CTkButton(self.frame_price, text=price, font=("Arial", 14), command=lambda p=price: self.append_text(p))
-            btn.pack(side="left", expand=True, fill="both", padx=4, pady=4)
+            btn = ctk.CTkButton(self.frame_price, text=price, font=("Arial", 14), width=80, command=lambda p=price: self.append_text(p))
+            btn.pack(side="left", padx=4, pady=4)
 
         # テンキーボタン
         numpad_buttons = [
@@ -55,8 +55,8 @@ class DoujinShoppingListApp(ctk.CTk):
             "0", "00", "000"
         ]
         for i, num in enumerate(numpad_buttons):
-            btn = ctk.CTkButton(self.frame_numpad, text=num, font=("Arial", 14), command=lambda n=num: self.append_text(n))
-            btn.grid(row=i//3, column=i%3, sticky="nsew", padx=2, pady=2)
+            btn = ctk.CTkButton(self.frame_numpad, text=num, font=("Arial", 14), width=60, command=lambda n=num: self.append_text(n))
+            btn.grid(row=i//3, column=i%3, padx=2, pady=2)
 
         # テンキーフレームのグリッド設定で均等割り当て
         for i in range(4):
@@ -65,12 +65,12 @@ class DoujinShoppingListApp(ctk.CTk):
             self.frame_numpad.grid_columnconfigure(j, weight=1)
 
         # コピー用ボタン
-        copy_btn = ctk.CTkButton(self.frame_copy, text="コピー", font=("Arial", 12), command=self.copy_to_clipboard)
-        copy_btn.pack(fill="both", expand=True, padx=2, pady=2)
+        copy_btn = ctk.CTkButton(self.frame_copy, text="コピー", font=("Arial", 12), width=120, command=self.copy_to_clipboard)
+        copy_btn.pack(padx=2, pady=2)
 
         # クリア用ボタン
-        clear_btn = ctk.CTkButton(self.frame_copy, text="クリア", font=("Arial", 12), command=self.clear_text)
-        clear_btn.pack(fill="both", expand=True, padx=2, pady=2)
+        clear_btn = ctk.CTkButton(self.frame_copy, text="クリア", font=("Arial", 12), width=120, command=self.clear_text)
+        clear_btn.pack(padx=2, pady=2)
 
     def append_text(self, text):
         current_text = self.text_display.get("1.0", "end-1c")
