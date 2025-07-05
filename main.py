@@ -31,10 +31,17 @@ class DoujinShoppingListApp:
             btn = tk.Button(self.frame_categories, text=cat, width=10, height=2, font=("Arial", 16), command=lambda c=cat: self.append_text(c))
             btn.pack(side=tk.LEFT, padx=5)
 
+
         # 数量ボタン
         quantities = ["部", "個", "つ"]
         for qty in quantities:
             btn = tk.Button(self.frame_quantity, text=qty, width=10, height=2, font=("Arial", 16), command=lambda q=qty: self.append_text(q))
+            btn.pack(side=tk.LEFT, padx=5)
+
+        # 「1部」「1セット」ボタン追加
+        one_unit_buttons = ["1部", "1セット"]
+        for unit in one_unit_buttons:
+            btn = tk.Button(self.frame_quantity, text=unit, width=10, height=2, font=("Arial", 16), command=lambda u=unit: self.append_text(u))
             btn.pack(side=tk.LEFT, padx=5)
 
         # 価格ボタン
