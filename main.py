@@ -38,7 +38,7 @@ class DoujinShoppingListApp(ctk.CTk):
             btn.pack(side="left", padx=6, pady=6)
 
         # 数量ボタン
-        quantities = ["部", "個"]
+        quantities = ["部", "セット","個"]
         for qty in quantities:
             btn = ctk.CTkButton(
                 self.frame_quantity,
@@ -50,7 +50,7 @@ class DoujinShoppingListApp(ctk.CTk):
             btn.pack(side="left", padx=6, pady=6)
 
         # 「1部」「1セット」ボタン
-        one_unit_buttons = ["1部", "1セット"]
+        one_unit_buttons = ["1部", "1セット","1個"]
         for unit in one_unit_buttons:
             btn = ctk.CTkButton(
                 self.frame_quantity,
@@ -62,7 +62,7 @@ class DoujinShoppingListApp(ctk.CTk):
             btn.pack(side="left", padx=6, pady=6)
 
         # 価格ボタン
-        prices = ["500円", "1000円", "1500円", "2000円", "3000円"]
+        prices = ["500円", "1000円", "1500円", "2000円", "3000円", "5000円", "円"]
         for price in prices:
             btn = ctk.CTkButton(
                 self.frame_price,
